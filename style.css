@@ -1,0 +1,168 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:99900);
+body{
+  padding:0;
+  margin:0;
+  font-family: 'Inter';
+}
+.vid-container{
+  position:relative;
+  height: 100vh;
+  overflow:hidden;
+}
+.bgvid.back {
+  position: fixed; right: 0; bottom: 0;
+  min-width: 100%; min-height: 100%;
+  width: auto; 
+  height: auto; 
+  z-index: -1000;
+  position: relative;
+}
+.inner {
+  position: absolute;
+}
+.inner-container{
+  width:400px;
+  height:400px;
+  position:absolute;
+  top:calc(50vh - 200px);
+  left:calc(50vw - 200px);
+  overflow:hidden;
+  border-radius: 7px;
+}
+
+.inner-container{ 
+  animation: mymove 1s forwards;
+}
+
+@keyframes mymove {
+  from {
+    opacity: 0;
+    top:0;
+
+  }
+  to {opacity: 1;}
+}
+
+
+.box{
+  position:absolute;
+  height:100%;
+  width:100%;
+  font-family:'Inter';
+  color:#fff;
+  background:rgba(0, 0, 0, 28%);
+  padding:30px 0px;
+  border-radius: 7px;
+}
+.box h1{
+  text-align:center;
+  margin:30px 0;
+  font-size:25px;
+}
+
+.from{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+ 
+}
+.from input, select{
+  display:block;
+  width:50%;
+  /*margin:50px auto;*/
+  padding:15px;
+  background:rgba(0,0,0,0.2);
+  color:#fff;
+  border-radius: 7px 0 0 7px;
+  border:0;
+}
+
+.from select {
+  width: 30%;
+  margin-top:0;
+  border-radius: 0 7px 7px 0;
+  border-left:1px solid #fff ;
+}
+
+input::placeholder {
+  color: rgb(182, 171, 163);
+}
+.signup{
+  color: rgb(182, 171, 163)!important;
+}
+.box input:focus,.box input:active,.box button:focus,.box button:active{
+  outline:none;
+}
+.box button{
+  background:#2d2f36;
+  border:0;
+  color:#fff;
+  padding:10px;
+  font-size:20px;
+  width:330px;
+  margin:20px auto;
+  display:block;
+  cursor:pointer;
+  border-radius: 7px;
+}
+.box button:active{
+  background:#000000;
+}
+.box p{
+  font-size:14px;
+  text-align:center;
+}
+.box p span{
+  cursor:pointer;
+  color:#666;
+}
+
+
+.sizeP{
+  display: block;
+  font-size: 1.2rem;
+  justify-content: center;
+  padding: 0 0 30px 15px;
+  font-weight: 700;
+}
+.sizeP span {
+  font-size: 1rem;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 10%;
+
+}
+th, td {
+  border: 1px solid #fff;
+  padding: 5px;
+  color: #fff;
+}
+
+.inner-container_output {
+ height: 600px;
+ top:calc(50vh - 300px);
+}     
+
+.inner-container_output .box button{
+  margin-top: 35px;
+}
+
+
+@media screen and (max-width: 986px) {
+  .bgvid{
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 986px) {
+  .bgvid.back {
+
+    width: 100vw;
+    height: 100vh; 
+  }
+}
