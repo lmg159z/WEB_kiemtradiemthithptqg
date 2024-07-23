@@ -78,32 +78,21 @@ const language = {
 
 // Hàm kiểm tra điểm
 function checking() {
-    const sbdElement = document.getElementById("input_check").value;
+    const sbdElement = document.getElementById("input_check").value
     const yearElement = document.querySelector("#years").value;
     
     if (sbdElement !== "" && sbdElement.length === 8) {
-        fetch(`https://api.sggp.org.vn/api/diem-thi?type=0&keyword=${sbdElement}&kythi=THPT&nam=${yearElement}&cumthi=0`)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json(); // Chuyển đổi phản hồi thành JSON
-          })
-          .then(data => {
-            if (data.data && data.data.results && data.data.results.length > 0) {
-              const value = data.data.results[0];
-              const nameSC = nameFile[value.sbd.slice(0, 2)];
-              console.log(value);
-              renderHTML(nameSC, value);
-            } else {
-              console.error('No results found');
-            }
-          })
-          .catch(error => {
-            console.error('There was a problem with the fetch operation:', error.message);
-          });
+      fetch(`https://api.viettimes.vn/api/diem-thi?type=0&keyword=${sbdElement}&kythi=THPT&nam=$={yearElement}&cumthi=0`)
+        .then(a => a.json())
+        .then(a => {
+          const arrayValue = a.data.results[0]
+          const acc = nameFile[arrayValue.sbd.slice(0,2)]
+          renderHTML(acc, arrayValue)
+        })
+        .catch(error => alert(error));
+   
     } else {
-        console.error('Số báo danh không hợp lệ');
+        alert('Số báo danh không hợp lệ');
     }
 }
 
@@ -186,3 +175,11 @@ function renderHTML(unit, score_info) {
       </div>`;
   };
 }
+
+
+fetch("https://api.viettimes.vn/api/diem-thi?type=0&keyword=01000001&kythi=THPT&nam=2024&cumthi=0")
+  .then(a => a.json())
+  .then(a => {
+    console.log(a.data.results[0]);
+  })
+  .catch(error => console.error('Error:', error));
